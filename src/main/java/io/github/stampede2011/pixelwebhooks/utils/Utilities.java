@@ -1,7 +1,8 @@
 package io.github.stampede2011.pixelwebhooks.utils;
 
 import com.google.common.collect.Lists;
-import com.lypaka.legendarygenerator.API.Events.LGSpawnEvent;
+import com.lypaka.betterpixelmonspawner.API.Spawning.LegendarySpawnEvent;
+import com.lypaka.legendarygenerator.API.LGSpawnEvent;
 import com.pixelmongenerations.api.events.spawning.SpawnEvent;
 import com.pixelmongenerations.common.entity.pixelmon.EntityPixelmon;
 import io.github.stampede2011.pixelwebhooks.PixelWebhooks;
@@ -37,6 +38,20 @@ public class Utilities {
                 .replaceAll("%x%", String.valueOf(player.getLocation().getBlockX()))
                 .replaceAll("%y%", String.valueOf(player.getLocation().getBlockY()))
                 .replaceAll("%z%", String.valueOf(player.getLocation().getBlockZ()));
+    }
+
+    public static String parse(String msg, LegendarySpawnEvent event) {
+        EntityPixelmon pokemon = event.getPokemon();
+        String biome = getBiomeName(pokemon.world.getBiome(pokemon.getPosition()));
+        int x = pokemon.getPosition().getX();
+        int y = pokemon.getPosition().getY();
+        int z = pokemon.getPosition().getZ();
+
+        return msg.replaceAll("%pokemon%", pokemon.getPokemonName())
+                .replaceAll("%biome%", biome)
+                .replaceAll("%x%", String.valueOf(x))
+                .replaceAll("%y%", String.valueOf(y))
+                .replaceAll("%z%", String.valueOf(z));
     }
 
     public static String getBiomeName(Biome biome) {

@@ -1,8 +1,8 @@
 package io.github.stampede2011.pixelwebhooks.listeners;
 
-import com.lypaka.legendarygenerator.API.LGSpawnEvent;
+
+import com.lypaka.betterpixelmonspawner.API.Spawning.LegendarySpawnEvent;
 import com.pixelmongenerations.common.entity.pixelmon.EntityPixelmon;
-import info.pixelmon.shadow.ninja.leaping.configurate.objectmapping.ObjectMappingException;
 import io.github.eufranio.config.Config;
 import io.github.stampede2011.pixelwebhooks.DiscordWebhook;
 import io.github.stampede2011.pixelwebhooks.PixelWebhooks;
@@ -14,11 +14,10 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
-public class LegendaryGeneratorSpawn {
-
+public class BPSLegendarySpawn {
 
     @SubscribeEvent
-    public void onLegendSpawn(LGSpawnEvent event) throws ObjectMappingException {
+    public void onBPSLegendary(LegendarySpawnEvent event) {
 
         Config<MainConfig> mainConfig = PixelWebhooks.getInstance().mainConfig;
 

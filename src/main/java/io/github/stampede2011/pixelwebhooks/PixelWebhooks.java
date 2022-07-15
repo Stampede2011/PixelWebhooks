@@ -1,19 +1,15 @@
 package io.github.stampede2011.pixelwebhooks;
 
-import com.google.common.collect.Lists;
 import com.google.inject.Inject;
-import com.pixelmongenerations.api.events.spawning.SpawnEvent;
-import com.pixelmongenerations.common.entity.pixelmon.EntityPixelmon;
-import info.pixelmon.shadow.ninja.leaping.configurate.objectmapping.ObjectMappingException;
 import io.github.eufranio.config.Config;
 import io.github.stampede2011.pixelwebhooks.commands.Base;
 import io.github.stampede2011.pixelwebhooks.config.MainConfig;
+import io.github.stampede2011.pixelwebhooks.listeners.BPSLegendarySpawn;
 import io.github.stampede2011.pixelwebhooks.listeners.LegendaryGeneratorSpawn;
 import io.github.stampede2011.pixelwebhooks.listeners.LegendarySpawn;
 import io.github.stampede2011.pixelwebhooks.utils.Utilities;
-import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.Loader;
 import org.slf4j.Logger;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.config.ConfigDir;
@@ -23,14 +19,8 @@ import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
-import org.spongepowered.api.text.Text;
-import org.spongepowered.api.text.serializer.TextSerializers;
 
-import java.awt.*;
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.stream.Collectors;
 
 @Plugin(id = PixelWebhooks.ID,
         name = PixelWebhooks.NAME,
@@ -46,7 +36,7 @@ public class PixelWebhooks {
 
     public static final String ID = "pixelwebhooks";
     public static final String NAME = "PixelWebhooks";
-    public static final String AUTHORS = "Stampede2011";
+    public static final String AUTHORS = "Stampede2011, Lypaka";
     public static final String DESCRIPTION = "Send legendary spawn announcements to Discord through a Webhook!";
     public static final String VERSION = "1.1.1";
 
@@ -83,6 +73,10 @@ public class PixelWebhooks {
         if (Sponge.getPluginManager().getPlugin("legendarygenerator").isPresent()) {
             this.logger.info("PixelWebhooks detected that LegendaryGenerator is installed!");
             MinecraftForge.EVENT_BUS.register(new LegendaryGeneratorSpawn());
+        }
+        if (Loader.isModLoaded("betterpixelmonspawner")) {
+            logger.info("PixelWebhooks detected that BetterPixelmonSpawner is installed!");
+            MinecraftForge.EVENT_BUS.register(new BPSLegendarySpawn());
         }
 
         Sponge.getCommandManager().register(instance, Base.build(), "pixelwebhooks", "pixelwebhook");

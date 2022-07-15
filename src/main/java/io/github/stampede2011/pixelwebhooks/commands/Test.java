@@ -1,7 +1,5 @@
 package io.github.stampede2011.pixelwebhooks.commands;
 
-import com.pixelmongenerations.api.events.spawning.SpawnEvent;
-import com.pixelmongenerations.common.entity.pixelmon.EntityPixelmon;
 import io.github.stampede2011.pixelwebhooks.DiscordWebhook;
 import io.github.stampede2011.pixelwebhooks.PixelWebhooks;
 import io.github.stampede2011.pixelwebhooks.utils.Utilities;
@@ -11,7 +9,6 @@ import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.command.spec.CommandSpec;
-import org.spongepowered.api.entity.living.player.Player;
 
 import java.awt.*;
 import java.io.IOException;

@@ -1,6 +1,5 @@
 package io.github.stampede2011.pixelwebhooks.commands;
 
-import io.github.stampede2011.pixelwebhooks.PixelWebhooks;
 import io.github.stampede2011.pixelwebhooks.utils.Utilities;
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
