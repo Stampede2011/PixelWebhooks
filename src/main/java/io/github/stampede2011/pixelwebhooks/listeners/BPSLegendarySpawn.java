@@ -1,6 +1,6 @@
 package io.github.stampede2011.pixelwebhooks.listeners;
 
-import com.lypaka.legendarygenerator.API.LGSpawnEvent;
+import com.lypaka.betterpixelmonspawner.API.Spawning.LegendarySpawnEvent;
 import com.pixelmongenerations.common.entity.pixelmon.EntityPixelmon;
 import io.github.stampede2011.pixelwebhooks.DiscordWebhook;
 import io.github.stampede2011.pixelwebhooks.config.ConfigGetters;
@@ -11,11 +11,10 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
-public class LegendaryGeneratorSpawn {
-
+public class BPSLegendarySpawn {
 
     @SubscribeEvent
-    public void onLegendSpawn(LGSpawnEvent event) {
+    public void onBPSLegendary (LegendarySpawnEvent event) {
 
         if (!ConfigGetters.webhookURL.equals("")) {
 
